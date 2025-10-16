@@ -77,7 +77,7 @@ This is visualized here using exponential stretching of the triangles.
 
 r(N) = r₀ * e^(λN)
 
-https://linocasu.github.io/SEGMENTED_SPACETIME/Slider.html
+https://error-wtf.github.io/SEGMENTED_SPACETIME/Slider.html
 
 ## License
 

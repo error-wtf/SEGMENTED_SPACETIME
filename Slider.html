@@ -83,9 +83,9 @@
     <h1>🌌 Segmented Spacetime: Exponential Triangle Visualizer</h1>
     
     <div class="theory-note">
-      <strong>Theorie:</strong> In der segmentierten Raumzeit wächst der Radius exponentiell mit der Segmentzahl N: 
+      <strong>Theory:</strong> In segmented spacetime, the radius grows exponentially with the segment number N: 
       <br><strong>r(N) = r₀ · e^(λN)</strong>
-      <br>wobei λ den Wachstumsparameter darstellt und N kontinuierlich durch die Segmente läuft.
+      <br>where λ represents the growth parameter and N runs continuously through the segments.
     </div>
 
     <div class="disclaimer">
@@ -97,7 +97,7 @@
     <label for="lambda">Lambda (λ): <span class="value-display" id="lambdaValue">0.200</span></label>
     <input type="range" id="lambda" min="0" max="1" step="0.001" value="0.2">
 
-    <p>Segmentzahl N (kontinuierlich): <span class="value-display" id="nValue">?</span></p>
+    <p>Segment number N (continuous): <span class="value-display" id="nValue">?</span></p>
 
     <svg width="400" height="600" viewBox="0 0 400 600">
     <polygon id="upperTriangle" fill="none" stroke="black" stroke-width="3" />
@@ -121,9 +121,9 @@
   <p id="equationResult">r(N) = r₀ · e^λN = ???</p>
   
   <div class="theory-note" style="margin-top: 2rem; font-size: 0.8rem;">
-    <strong>φ-Quantisierung:</strong> Die tatsächliche diskrete Struktur entsteht durch φ = (1+√5)/2 ≈ 1.618034, 
-    wobei jedes Segment um den Faktor φ skaliert. Die kontinuierliche Darstellung zeigt den 
-    zugrunde liegenden exponentiellen Wachstumstrend.
+    <strong>φ-Quantization:</strong> The actual discrete structure arises through φ = (1+√5)/2 ≈ 1.618034, 
+    where each segment scales by the factor φ. The continuous representation shows the 
+    underlying exponential growth trend.
   </div>
   </div>
 
@@ -141,31 +141,31 @@
       const lambda = parseFloat(lambdaSlider.value);
       const r0 = 1;
       
-      // WICHTIG: N ist jetzt eine REELLE ZAHL, keine Integer-Vereinfachung mehr!
-      // Die kontinuierliche Segmentzahl reflektiert die wahre Natur der Theorie
-      const n = 4 + 6 * lambda; // Kontinuierlich von 4 bis 10
+      // IMPORTANT: N is now a REAL NUMBER, no longer an integer simplification!
+      // The continuous segment number reflects the true nature of the theory
+      const n = 4 + 6 * lambda; // Continuous from 4 to 10
       const rN = r0 * Math.exp(lambda * n);
 
-      // Anzeige mit mehr Präzision für reelle Zahlen
+      // Display with higher precision for real numbers
       lambdaValue.textContent = lambda.toFixed(3);
-      nValue.textContent = n.toFixed(4); // 4 Dezimalstellen für kontinuierliche N
+      nValue.textContent = n.toFixed(4); // 4 decimal places for continuous N
 
-      // Koordinaten für größeres SVG angepasst (viewBox: 400×600)
-      // Mittelpunkt bei x=200, oberes Dreieck bei y≈250, unteres bei y≈350
-      const scaleFactor = 30; // Reduziert für bessere Sichtbarkeit
+      // Coordinates adjusted for larger SVG (viewBox: 400×600)
+      // Center at x=200, upper triangle at y≈250, lower at y≈350
+      const scaleFactor = 30; // Reduced for better visibility
       const upperY = 250 - lambda * n * scaleFactor;
       const lowerY = 350 + lambda * n * scaleFactor;
 
-      // Dreiecke zentriert bei x=200, Breite ±100
+      // Triangles centered at x=200, width ±100
       upperTriangle.setAttribute('points', `200,${upperY} 100,250 300,250`);
       lowerTriangle.setAttribute('points', `200,${lowerY} 100,350 300,350`);
 
       upperText.setAttribute('y', upperY - 10);
-      upperText.setAttribute('x', 180); // Zentriert
+      upperText.setAttribute('x', 180); // Centered
       lowerText.setAttribute('y', lowerY + 25);
-      lowerText.setAttribute('x', 180); // Zentriert
+      lowerText.setAttribute('x', 180); // Centered
 
-      // Ergebnis mit höherer Präzision
+      // Result with higher precision
       equationResult.textContent = `r(N) = r₀ · e^(λN) = ${rN.toFixed(6)} (N = ${n.toFixed(4)})`;
     }
 

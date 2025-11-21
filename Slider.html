@@ -2,52 +2,130 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <title>Exponential Triangle (λ → N gekoppelt)</title>
+  <title>Segmented Spacetime: Exponential Triangle (λ → N)</title>
   <style>
     body {
       font-family: sans-serif;
       text-align: center;
       padding: 2rem;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      min-height: 100vh;
+    }
+    .container {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      padding: 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+    }
+    .theory-note {
+      background: rgba(255,255,255,0.15);
+      padding: 1rem;
+      border-radius: 10px;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+    .disclaimer {
+      background: rgba(255,200,0,0.2);
+      border-left: 4px solid #fbbf24;
+      padding: 0.8rem;
+      margin: 1.5rem 0;
+      border-radius: 5px;
+      font-size: 0.85rem;
+      text-align: left;
     }
     svg {
-      margin-top: 2rem;
+      margin-top: 1.5rem;
+      background: rgba(255,255,255,0.9);
+      border-radius: 15px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
     }
     label {
       display: block;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
       font-weight: bold;
+      font-size: 1.1rem;
     }
     input[type=range] {
-      width: 300px;
+      width: 400px;
+      height: 8px;
+      margin: 0.5rem 0;
+    }
+    .value-display {
+      font-family: 'Courier New', monospace;
+      background: rgba(255,255,255,0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      display: inline-block;
+      margin: 0.5rem;
+      font-size: 1.1rem;
+    }
+    #equationResult {
+      font-family: 'Courier New', monospace;
+      font-size: 1.2rem;
+      margin: 1.5rem 0;
+      background: rgba(255,255,255,0.2);
+      padding: 1rem;
+      border-radius: 10px;
     }
   </style>
 </head>
 <body>
-  <h1>Exponential Triangle Visualizer (λ steuert N)</h1>
+  <div class="container">
+    <h1>🌌 Segmented Spacetime: Exponential Triangle Visualizer</h1>
+    
+    <div class="theory-note">
+      <strong>Theorie:</strong> In der segmentierten Raumzeit wächst der Radius exponentiell mit der Segmentzahl N: 
+      <br><strong>r(N) = r₀ · e^(λN)</strong>
+      <br>wobei λ den Wachstumsparameter darstellt und N kontinuierlich durch die Segmente läuft.
+    </div>
 
-  <label for="lambda">Lambda (λ): <span id="lambdaValue">0.2</span></label>
-  <input type="range" id="lambda" min="0" max="1" step="0.01" value="0.2">
+    <div class="disclaimer">
+      <strong>⚠️ Hinweis:</strong> Frühere Visualisierungen verwendeten <em>ganzzahlige</em> Werte für N zur Vereinfachung. 
+      Diese Version arbeitet mit <strong>reellen Zahlen</strong>, um die kontinuierliche Natur der Segmented Spacetime-Theorie 
+      korrekt darzustellen. Die diskrete Segmentierung entsteht durch φ-Quantisierung, nicht durch Integer-Schritte.
+    </div>
 
-  <p>N (automatisch aus λ): <span id="nValue">?</span></p>
+    <label for="lambda">Lambda (λ): <span class="value-display" id="lambdaValue">0.200</span></label>
+    <input type="range" id="lambda" min="0" max="1" step="0.001" value="0.2">
 
-  <svg width="300" height="400" viewBox="0 0 300 400">
+    <p>Segmentzahl N (kontinuierlich): <span class="value-display" id="nValue">?</span></p>
+
+    <svg width="400" height="600" viewBox="0 0 400 600">
     <polygon id="upperTriangle" fill="none" stroke="black" stroke-width="3" />
     <polygon id="lowerTriangle" fill="none" stroke="black" stroke-width="3" />
-    <text id="upperText" x="140" fill="#38bdf8">λN</text>
-    <text id="lowerText" x="140" fill="#38bdf8">λt</text>
+    <text id="upperText" x="180" fill="#1e40af" font-weight="bold" font-size="16">λN</text>
+    <text id="lowerText" x="180" fill="#1e40af" font-weight="bold" font-size="16">λt</text>
 
-    <text x="60" y="155">r₀e</text>
-    <text x="225" y="155">r(N)</text>
-    <text x="110" y="170" fill="#38bdf8">x</text>
-    <text x="200" y="170" fill="#38bdf8">z</text>
+    <!-- Oberes Dreieck Labels -->
+    <text x="90" y="255" fill="#374151" font-size="14">r₀e</text>
+    <text x="290" y="255" fill="#374151" font-size="14">r(N)</text>
+    <text x="140" y="270" fill="#059669" font-size="14">x</text>
+    <text x="260" y="270" fill="#059669" font-size="14">z</text>
 
-    <text x="60" y="255">r₀e</text>
-    <text x="225" y="255">r(t)</text>
-    <text x="110" y="270" fill="#38bdf8">x</text>
-    <text x="200" y="270" fill="#38bdf8">z</text>
+    <!-- Unteres Dreieck Labels -->
+    <text x="90" y="355" fill="#374151" font-size="14">r₀e</text>
+    <text x="290" y="355" fill="#374151" font-size="14">r(t)</text>
+    <text x="140" y="370" fill="#059669" font-size="14">x</text>
+    <text x="260" y="370" fill="#059669" font-size="14">z</text>
   </svg>
 
   <p id="equationResult">r(N) = r₀ · e^λN = ???</p>
+  
+  <div class="theory-note" style="margin-top: 2rem; font-size: 0.8rem;">
+    <strong>φ-Quantisierung:</strong> Die tatsächliche diskrete Struktur entsteht durch φ = (1+√5)/2 ≈ 1.618034, 
+    wobei jedes Segment um den Faktor φ skaliert. Die kontinuierliche Darstellung zeigt den 
+    zugrunde liegenden exponentiellen Wachstumstrend.
+  </div>
+  </div>
 
   <script>
     const lambdaSlider = document.getElementById('lambda');
@@ -62,22 +140,33 @@
     function updateTriangles() {
       const lambda = parseFloat(lambdaSlider.value);
       const r0 = 1;
-      const n = Math.round(4 + 6 * lambda); // N wird aus λ berechnet
+      
+      // WICHTIG: N ist jetzt eine REELLE ZAHL, keine Integer-Vereinfachung mehr!
+      // Die kontinuierliche Segmentzahl reflektiert die wahre Natur der Theorie
+      const n = 4 + 6 * lambda; // Kontinuierlich von 4 bis 10
       const rN = r0 * Math.exp(lambda * n);
 
-      lambdaValue.textContent = lambda.toFixed(2);
-      nValue.textContent = n;
+      // Anzeige mit mehr Präzision für reelle Zahlen
+      lambdaValue.textContent = lambda.toFixed(3);
+      nValue.textContent = n.toFixed(4); // 4 Dezimalstellen für kontinuierliche N
 
-      const upperY = 150 - lambda * n * 40;
-      const lowerY = 250 + lambda * n * 40;
+      // Koordinaten für größeres SVG angepasst (viewBox: 400×600)
+      // Mittelpunkt bei x=200, oberes Dreieck bei y≈250, unteres bei y≈350
+      const scaleFactor = 30; // Reduziert für bessere Sichtbarkeit
+      const upperY = 250 - lambda * n * scaleFactor;
+      const lowerY = 350 + lambda * n * scaleFactor;
 
-      upperTriangle.setAttribute('points', `150,${upperY} 80,150 220,150`);
-      lowerTriangle.setAttribute('points', `150,${lowerY} 80,250 220,250`);
+      // Dreiecke zentriert bei x=200, Breite ±100
+      upperTriangle.setAttribute('points', `200,${upperY} 100,250 300,250`);
+      lowerTriangle.setAttribute('points', `200,${lowerY} 100,350 300,350`);
 
       upperText.setAttribute('y', upperY - 10);
-      lowerText.setAttribute('y', lowerY + 30);
+      upperText.setAttribute('x', 180); // Zentriert
+      lowerText.setAttribute('y', lowerY + 25);
+      lowerText.setAttribute('x', 180); // Zentriert
 
-      equationResult.textContent = `r(N) = r₀ · e^λN = ${rN.toFixed(4)}`;
+      // Ergebnis mit höherer Präzision
+      equationResult.textContent = `r(N) = r₀ · e^(λN) = ${rN.toFixed(6)} (N = ${n.toFixed(4)})`;
     }
 
     lambdaSlider.addEventListener('input', updateTriangles);

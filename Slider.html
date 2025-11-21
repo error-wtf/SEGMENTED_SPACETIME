@@ -27,20 +27,11 @@
     }
     .theory-note {
       background: rgba(255,255,255,0.15);
-      padding: 1rem;
+      padding: 1.5rem;
       border-radius: 10px;
       margin: 1rem 0;
       font-size: 0.9rem;
       line-height: 1.5;
-    }
-    .disclaimer {
-      background: rgba(255,200,0,0.2);
-      border-left: 4px solid #fbbf24;
-      padding: 0.8rem;
-      margin: 1.5rem 0;
-      border-radius: 5px;
-      font-size: 0.85rem;
-      text-align: left;
     }
     svg {
       margin-top: 1.5rem;
@@ -82,16 +73,34 @@
   <div class="container">
     <h1>🌌 Segmented Spacetime: Exponential Triangle Visualizer</h1>
     
-    <div class="theory-note">
-      <strong>Theory:</strong> In segmented spacetime, the radius grows exponentially with the segment number N: 
-      <br><strong>r(N) = r₀ · e^(λN)</strong>
-      <br>where λ represents the growth parameter and N runs continuously through the segments.
-    </div>
-
-    <div class="disclaimer">
-      <strong>⚠️ Note:</strong> Earlier visualizations used <em>integer</em> values for N for simplification purposes. 
-      This version uses <strong>real numbers</strong> to correctly represent the continuous nature of the Segmented Spacetime theory. 
-      The discrete segmentation arises from φ-quantization, not from integer steps.
+    <div class="theory-note" style="text-align: left; line-height: 1.8;">
+      <h3 style="margin-top: 0; text-align: center;">Mathematical Framework</h3>
+      
+      <p><strong>Exponential Growth Model:</strong></p>
+      <p>The radius in segmented spacetime follows the exponential law:</p>
+      <p style="text-align: center; font-size: 1.1rem; margin: 1rem 0;">
+        <strong>r(N) = r₀ · e^(λN)</strong>
+      </p>
+      
+      <p><strong>Parameters:</strong></p>
+      <ul style="margin: 0.5rem 0;">
+        <li><strong>r₀</strong> = initial radius at N = 0 (reference scale)</li>
+        <li><strong>λ</strong> = growth rate parameter (controls expansion speed)</li>
+        <li><strong>N</strong> = continuous segment number (real-valued, not discrete)</li>
+        <li><strong>e</strong> ≈ 2.71828 (Euler's number, base of natural logarithm)</li>
+      </ul>
+      
+      <p><strong>Continuous vs. Discrete Nature:</strong></p>
+      <p>While N is treated as a <em>continuous</em> variable in the mathematical model, the physical 
+      segmentation arises through <strong>φ-quantization</strong> where φ = (1+√5)/2 ≈ 1.618034 (golden ratio). 
+      Each physical segment scales by factor φ, but the underlying growth trend is captured by the 
+      continuous exponential function.</p>
+      
+      <p><strong>Connection to φ-segmentation:</strong></p>
+      <p>The discrete segment radii follow r_n = r₀ · φ^n. Taking logarithms:</p>
+      <p style="margin-left: 2rem;">ln(r_n) = ln(r₀) + n · ln(φ)</p>
+      <p>This shows that φ-based growth is equivalent to exponential growth with λ = ln(φ) ≈ 0.481211, 
+      establishing the mathematical bridge between discrete φ-steps and continuous exponential expansion.</p>
     </div>
 
     <label for="lambda">Lambda (λ): <span class="value-display" id="lambdaValue">0.200</span></label>
